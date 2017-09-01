@@ -1,7 +1,7 @@
 package com.ivianuu.rxsuperuser;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Thrown on when root is not available
  */
 public class RootNotAvailableException extends IllegalStateException {
     RootNotAvailableException() {

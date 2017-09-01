@@ -10,16 +10,21 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Wraps su commands in observables
  */
-public class RxSuperUser {
+public final class RxSuperUser {
+
+    private RxSuperUser() {
+        // no instances
+    }
 
     /**
-     * Runs command as root (if available) and return output
+     * Runs command as root (if available) and returns the output
      *
      * Returns Output of the command, or throw an error if root isn't available or in
      * case of an error
      */
+    @NonNull
     public static Single<List<String>> run(@NonNull final String command) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -32,11 +37,12 @@ public class RxSuperUser {
     }
 
     /**
-     * Runs commands as root (if available) and return output
+     * Runs commands as root (if available) and returns the output
      *
      * Returns Output of the commands, or throw an error if root isn't available or in
      * case of an error
      */
+    @NonNull
     public static Single<List<String>> run(@NonNull final List<String> commands) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -54,6 +60,7 @@ public class RxSuperUser {
      * Returns Output of the commands, or throw an error if root isn't available or in
      * case of an error
      */
+    @NonNull
     public static Single<List<String>> run(@NonNull final String[] commands) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -72,6 +79,7 @@ public class RxSuperUser {
      * all otherwise
      * Returns true if available
      */
+    @NonNull
     public static Single<Boolean> available() {
         return Single.fromCallable(new Callable<Boolean>() {
             @Override
