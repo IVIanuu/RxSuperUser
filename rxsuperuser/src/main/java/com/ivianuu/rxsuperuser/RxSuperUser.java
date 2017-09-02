@@ -1,5 +1,6 @@
 package com.ivianuu.rxsuperuser;
 
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public final class RxSuperUser {
      * Returns Output of the command, or throw an error if root isn't available or in
      * case of an error
      */
-    @NonNull
+    @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String command) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -42,7 +43,7 @@ public final class RxSuperUser {
      * Returns Output of the commands, or throw an error if root isn't available or in
      * case of an error
      */
-    @NonNull
+    @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final List<String> commands) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -60,7 +61,7 @@ public final class RxSuperUser {
      * Returns Output of the commands, or throw an error if root isn't available or in
      * case of an error
      */
-    @NonNull
+    @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String[] commands) {
         return Single.fromCallable(new Callable<List<String>>() {
             @Override
@@ -79,7 +80,7 @@ public final class RxSuperUser {
      * all otherwise
      * Returns true if available
      */
-    @NonNull
+    @CheckResult @NonNull
     public static Single<Boolean> available() {
         return Single.fromCallable(new Callable<Boolean>() {
             @Override
