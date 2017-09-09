@@ -27,13 +27,10 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String command) {
-        return Single.fromCallable(new Callable<List<String>>() {
-            @Override
-            public List<String> call() throws Exception {
-                List<String> output = Shell.SU.run(command);
-                checkNotNull(output);
-                return output;
-            }
+        return Single.fromCallable(() -> {
+            List<String> output = Shell.SU.run(command);
+            checkNotNull(output);
+            return output;
         }).subscribeOn(Schedulers.computation());
     }
 
@@ -45,13 +42,10 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final List<String> commands) {
-        return Single.fromCallable(new Callable<List<String>>() {
-            @Override
-            public List<String> call() throws Exception {
-                List<String> output = Shell.SU.run(commands);
-                checkNotNull(output);
-                return output;
-            }
+        return Single.fromCallable(() -> {
+            List<String> output = Shell.SU.run(commands);
+            checkNotNull(output);
+            return output;
         }).subscribeOn(Schedulers.computation());
     }
 
@@ -63,13 +57,10 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String[] commands) {
-        return Single.fromCallable(new Callable<List<String>>() {
-            @Override
-            public List<String> call() throws Exception {
-                List<String> output = Shell.SU.run(commands);
-                checkNotNull(output);
-                return output;
-            }
+        return Single.fromCallable(() -> {
+            List<String> output = Shell.SU.run(commands);
+            checkNotNull(output);
+            return output;
         }).subscribeOn(Schedulers.computation());
     }
     
@@ -82,12 +73,8 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<Boolean> available() {
-        return Single.fromCallable(new Callable<Boolean>() {
-            @Override
-            public Boolean call() throws Exception {
-                return Shell.SU.available();
-            }
-        }).subscribeOn(Schedulers.computation());
+        return Single.fromCallable(Shell.SU::available)
+                .subscribeOn(Schedulers.computation());
     }
 
     private static void checkNotNull(Object object) {

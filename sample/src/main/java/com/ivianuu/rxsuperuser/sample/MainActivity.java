@@ -24,24 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RxSuperUser.available()
-                .filter(new Predicate<Boolean>() {
-                    @Override
-                    public boolean test(@NonNull Boolean rootAvailable) throws Exception {
-                        return rootAvailable;
-                    }
-                })
-                .flatMapSingle(new Function<Boolean, SingleSource<List<String>>>() {
-                    @Override
-                    public SingleSource<List<String>> apply(@NonNull Boolean aBoolean) throws Exception {
-                        return RxSuperUser.run("some cool root command");
-                    }
-                })
+                .filter(rootAvailable -> rootAvailable)
+                .flatMapSingle(__ -> RxSuperUser.run("some cool root command"))
                 .toCompletable()
-                .subscribe(new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        Log.d("tag", "successfully executed root command");
-                    }
-                });
+                .subscribe(() -> Log.d("tag", "successfully executed root command"));
     }
 }
