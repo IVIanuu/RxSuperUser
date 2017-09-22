@@ -31,7 +31,7 @@ public final class RxSuperUser {
             List<String> output = Shell.SU.run(command);
             checkNotNull(output);
             return output;
-        }).subscribeOn(Schedulers.computation());
+        }).subscribeOn(Schedulers.io());
     }
 
     /**
@@ -46,7 +46,7 @@ public final class RxSuperUser {
             List<String> output = Shell.SU.run(commands);
             checkNotNull(output);
             return output;
-        }).subscribeOn(Schedulers.computation());
+        }).subscribeOn(Schedulers.io());
     }
 
     /**
@@ -61,7 +61,7 @@ public final class RxSuperUser {
             List<String> output = Shell.SU.run(commands);
             checkNotNull(output);
             return output;
-        }).subscribeOn(Schedulers.computation());
+        }).subscribeOn(Schedulers.io());
     }
     
 
@@ -74,7 +74,7 @@ public final class RxSuperUser {
     @CheckResult @NonNull
     public static Single<Boolean> available() {
         return Single.fromCallable(Shell.SU::available)
-                .subscribeOn(Schedulers.computation());
+                .subscribeOn(Schedulers.io());
     }
 
     private static void checkNotNull(Object object) {
