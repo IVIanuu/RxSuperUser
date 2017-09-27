@@ -25,6 +25,9 @@ dependencies {
     // RxJava
     compile rootProject.ext.rxJava
 
+    // Preconditions
+    implementation rootProject.ext.preconditions
+
     // Superuser
     compile rootProject.ext.superUser
 }

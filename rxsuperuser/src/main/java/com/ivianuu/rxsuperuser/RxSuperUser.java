@@ -4,11 +4,12 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import eu.chainfire.libsuperuser.Shell;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.ivianuu.preconditions.Preconditions.checkNotNull;
 
 /**
  * Wraps su commands in observables
@@ -27,6 +28,7 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String command) {
+        checkNotNull(command, "command == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(command);
             checkNotNull(output);
@@ -42,6 +44,7 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final List<String> commands) {
+        checkNotNull(commands, "commands == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(commands);
             checkNotNull(output);
@@ -57,6 +60,7 @@ public final class RxSuperUser {
      */
     @CheckResult @NonNull
     public static Single<List<String>> run(@NonNull final String[] commands) {
+        checkNotNull(commands, "commands == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(commands);
             checkNotNull(output);
@@ -69,17 +73,12 @@ public final class RxSuperUser {
      * Detects whether or not superuser access is available, by checking the
      * output of the "id" command if available, checking if a shell runs at
      * all otherwise
+     *
      * Returns true if available
      */
     @CheckResult @NonNull
     public static Single<Boolean> available() {
         return Single.fromCallable(Shell.SU::available)
                 .subscribeOn(Schedulers.io());
-    }
-
-    private static void checkNotNull(Object object) {
-        if (object == null) {
-            throw new RootNotAvailableException();
-        }
     }
 }
