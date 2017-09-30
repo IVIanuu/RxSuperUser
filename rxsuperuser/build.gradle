@@ -20,16 +20,16 @@ android {
 
 dependencies {
     // Android Support
-    compile rootProject.ext.supportAnnotations
+    api rootProject.ext.supportAnnotations
 
     // RxJava
-    compile rootProject.ext.rxJava
+    api rootProject.ext.rxJava
 
     // Preconditions
-    implementation rootProject.ext.preconditions
+    api rootProject.ext.preconditions
 
     // Superuser
-    compile rootProject.ext.superUser
+    api rootProject.ext.superUser
 }
 
 // build a jar with source files
