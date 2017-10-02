@@ -9,7 +9,7 @@ import eu.chainfire.libsuperuser.Shell;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+import static com.ivianuu.rxsuperuser.Preconditions.checkNotNull;
 
 /**
  * Wraps su commands in observables
@@ -31,7 +31,7 @@ public final class RxSuperUser {
         checkNotNull(command, "command == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(command);
-            checkNotNull(output);
+            checkNotNull(output, "output == null");
             return output;
         }).subscribeOn(Schedulers.io());
     }
@@ -47,7 +47,7 @@ public final class RxSuperUser {
         checkNotNull(commands, "commands == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(commands);
-            checkNotNull(output);
+            checkNotNull(output, "output == null");
             return output;
         }).subscribeOn(Schedulers.io());
     }
@@ -63,7 +63,7 @@ public final class RxSuperUser {
         checkNotNull(commands, "commands == null");
         return Single.fromCallable(() -> {
             List<String> output = Shell.SU.run(commands);
-            checkNotNull(output);
+            checkNotNull(output, "output == null");
             return output;
         }).subscribeOn(Schedulers.io());
     }

@@ -25,9 +25,6 @@ dependencies {
     // RxJava
     api rootProject.ext.rxJava
 
-    // Preconditions
-    api rootProject.ext.preconditions
-
     // Superuser
     api rootProject.ext.superUser
 }
