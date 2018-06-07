@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RxSuperUser.iml" filepath="$PROJECT_DIR$/RxSuperUser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RxSuperUser.iml" filepath="$PROJECT_DIR$/RxSuperUser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxsuperuser/rxsuperuser.iml" filepath="$PROJECT_DIR$/rxsuperuser/rxsuperuser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxsuperuser/rxsuperuser.iml" filepath="$PROJECT_DIR$/rxsuperuser/rxsuperuser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>
